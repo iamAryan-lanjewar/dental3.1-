@@ -21,79 +21,76 @@ export default function App() {
   return (
     <main className="relative w-screen h-screen overflow-hidden select-none bg-[#f47738] font-montserrat">
       {/* 
-        Full-Screen Stage
-        Matches the 4268.75 x 2400 (16:9) PDF artboard with pixel-perfect zero deviation.
+        Full-Screen Edge-to-Edge Stage
+        Guarantees zero letterboxing across any viewport ratio (16:9, 16:10, ultrawide, mobile)
       */}
-      <div className="relative w-full h-full flex items-center justify-center overflow-hidden">
-        {/* Background Image: Joyful smiling girl on vibrant orange backdrop */}
-        <div className="absolute inset-0 w-full h-full overflow-hidden">
-          <img
-            src="/images/joyful_smile_bg.png"
-            alt="Joyful smiling girl against orange studio background"
-            className="w-full h-full object-cover object-[78%_center] sm:object-[76%_center] md:object-[74%_center] lg:object-[72%_center] xl:object-[70%_center] pointer-events-none select-none transition-all duration-500 ease-out"
-          />
-        </div>
+      <div className="relative w-full h-full overflow-hidden">
+        {/* Full-bleed background image seamlessly filling entire screen */}
+        <img
+          src="/images/joyful_smile_bg.png"
+          alt="Joyful smiling girl against orange studio background"
+          className="absolute inset-0 w-full h-full object-cover object-[86%_center] sm:object-[74%_center] md:object-[70%_center] lg:object-[68%_center] xl:object-[65%_center] pointer-events-none select-none transition-all duration-500"
+        />
 
         {/* 
-          Hero Content Layer
-          Scaled and aligned to match the exact PDF coordinates:
-          - Opening quote mark: smaller, floating above 'y'
-          - Cursive IntroScript font: pure white with delicate warm drop shadow
-          - Button: #CEEDED pill, deep slate navy text, white circle with right arrow
+          16:9 Proportional Content Container
+          Centers and anchors the exact PDF typography and button layout
         */}
         <div className="relative z-10 w-full h-full max-w-[1920px] max-h-[1080px] mx-auto pointer-events-none">
-          {/* Headline Typography Block */}
-          <div className="absolute left-[3.2%] sm:left-[3.5%] top-[12%] sm:top-[16%] md:top-[18%] lg:top-[20%] xl:top-[21%] text-white tracking-normal font-intro-script pointer-events-auto filter drop-shadow-[0_4px_16px_rgba(0,0,0,0.2)]">
-            {/* 
-              Floating Opening Quotation Mark
-              In the PDF design, this is smaller (~40% of the word height) and floats above the 'y'
-            */}
-            <div className="text-[2rem] sm:text-[2.6rem] md:text-[3.2rem] lg:text-[4rem] xl:text-[4.6rem] leading-none mb-1 sm:mb-2 ml-0 sm:ml-1 text-white select-none font-intro-script">
-              “
-            </div>
-
-            {/* Line 1: your smile */}
-            <h1 className="text-[2.8rem] sm:text-[3.8rem] md:text-[4.8rem] lg:text-[5.9rem] xl:text-[6.9rem] 2xl:text-[7.8rem] leading-[0.98] text-white font-normal whitespace-nowrap pl-1 sm:pl-2 select-none font-intro-script">
-              your smile
+          {/* 
+            Hero Typography
+            From PDF:
+            Line 1: “ your smile  (x ≈ 1.5%, y ≈ 22%)
+            Line 2: does really    (x ≈ 2.2%, y ≈ 38%)
+            Line 3: matter !”      (x ≈ 6.0%, y ≈ 54%)
+          */}
+          <div
+            className="absolute left-[3%] sm:left-[3.5%] top-[18%] sm:top-[20%] md:top-[22%] text-white font-intro-script leading-[1.12] pointer-events-auto filter drop-shadow-[0_4px_16px_rgba(0,0,0,0.22)] select-none"
+            style={{ fontSize: 'clamp(2.5rem, 8.8vw, 7.8rem)' }}
+          >
+            {/* Line 1: “ your smile */}
+            <h1 className="whitespace-nowrap tracking-normal font-normal pl-0">
+              “ your smile
             </h1>
 
             {/* Line 2: does really */}
-            <div className="text-[2.8rem] sm:text-[3.8rem] md:text-[4.8rem] lg:text-[5.9rem] xl:text-[6.9rem] 2xl:text-[7.8rem] leading-[0.98] text-white font-normal whitespace-nowrap pl-1 sm:pl-2 select-none font-intro-script">
+            <div className="whitespace-nowrap tracking-normal font-normal pl-[0.06em]">
               does really
             </div>
 
             {/* Line 3: matter !” */}
-            <div className="text-[2.8rem] sm:text-[3.8rem] md:text-[4.8rem] lg:text-[5.9rem] xl:text-[6.9rem] 2xl:text-[7.8rem] leading-[0.98] text-white font-normal whitespace-nowrap pl-5 sm:pl-8 md:pl-10 lg:pl-12 select-none font-intro-script">
+            <div className="whitespace-nowrap tracking-normal font-normal pl-[0.34em]">
               matter !”
             </div>
           </div>
 
           {/* 
             Call To Action Button: "Get Appointment →"
+            Left: 3.5%
+            Bottom: 8.5%
             Background: #CEEDED
-            Text color: #2E4A82
-            Font: Montserrat Bold
-            Icon: White circular badge with soft cyan arrow
+            Text: #2E4A82 (Montserrat Bold)
+            Arrow circle: White with soft cyan cutout arrow #9ad4dc
           */}
-          <div className="absolute left-[3.2%] sm:left-[3.5%] bottom-[6%] sm:bottom-[7.5%] md:bottom-[8.5%] lg:bottom-[9.5%] xl:bottom-[10%] pointer-events-auto">
+          <div className="absolute left-[3%] sm:left-[3.5%] bottom-[7%] sm:bottom-[8%] md:bottom-[9%] pointer-events-auto">
             <button
               onClick={handleOpenAppointment}
-              className="group relative flex items-center justify-between bg-[#CEEDED] hover:bg-[#bfe6e6] active:scale-[0.98] transition-all duration-300 rounded-full px-5 sm:px-7 md:px-8 py-2.5 sm:py-3.5 md:py-4 shadow-[0_8px_20px_rgba(32,86,107,0.18)] hover:shadow-[0_12px_28px_rgba(32,86,107,0.26)] min-w-[200px] sm:min-w-[240px] md:min-w-[270px] lg:min-w-[300px]"
+              className="group relative flex items-center justify-between bg-[#CEEDED] hover:bg-[#bce4e4] active:scale-[0.985] transition-all duration-300 rounded-full px-6 sm:px-7 md:px-8 py-3.5 sm:py-4 md:py-4.5 shadow-[0_8px_24px_rgba(32,86,107,0.18)] hover:shadow-[0_12px_32px_rgba(32,86,107,0.28)] cursor-pointer min-w-[210px] sm:min-w-[250px] md:min-w-[290px]"
               aria-label="Get Appointment"
             >
               {/* Button Text */}
-              <span className="text-[#2E4A82] font-bold text-xs sm:text-sm md:text-base lg:text-lg tracking-normal mr-3 sm:mr-4 select-none">
+              <span className="text-[#2E4A82] font-bold text-sm sm:text-base md:text-lg lg:text-xl tracking-tight mr-3 sm:mr-4 select-none">
                 Get Appointment
               </span>
 
               {/* White Circular Badge with Soft Cyan Arrow */}
-              <div className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8 lg:w-9 lg:h-9 rounded-full bg-white flex items-center justify-center shrink-0 shadow-sm transition-transform duration-300 group-hover:translate-x-1">
+              <div className="w-7 h-7 sm:w-8 sm:h-8 md:w-9 md:h-9 rounded-full bg-white flex items-center justify-center shrink-0 shadow-sm transition-transform duration-300 group-hover:translate-x-1">
                 <svg
-                  className="w-3 h-3 sm:w-3.5 sm:h-3.5 md:w-4 md:h-4 text-[#9dd7e8] transition-colors group-hover:text-[#2E4A82]"
+                  className="w-3.5 h-3.5 sm:w-4 sm:h-4 md:w-4.5 md:h-4.5 text-[#9ad4dc] transition-colors group-hover:text-[#2E4A82]"
                   viewBox="0 0 24 24"
                   fill="none"
                   stroke="currentColor"
-                  strokeWidth="3"
+                  strokeWidth="3.2"
                   strokeLinecap="round"
                   strokeLinejoin="round"
                 >
