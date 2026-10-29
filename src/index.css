@@ -1,0 +1,29 @@
+@import "tailwindcss";
+
+@font-face {
+  font-family: 'IntroScript';
+  src: url('/fonts/IntroScriptDemo-Medium.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@layer base {
+  body {
+    font-family: 'Montserrat', sans-serif;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    background-color: #f77f3a;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
+
+.font-intro-script {
+  font-family: 'IntroScript', cursive, sans-serif;
+}
+
+.font-montserrat {
+  font-family: 'Montserrat', sans-serif;
+}

@@ -1,0 +1,6 @@
+{
+  "name": "Mainframe - Creative Agency & Clinic",
+  "description": "Pixel-perfect full-screen hero landing experience for Mainframe with zero-deviation design translation, interactive appointment booking, and real-time design alignment.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
